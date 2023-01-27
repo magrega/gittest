@@ -1,3 +1,4 @@
+
 // const COUNTER = document.querySelector('.counter');
 // let count = 0;
 
@@ -48,7 +49,6 @@ function dosmth(counter = 0) {
 console.log(dosmth(0));
 
 // методы функции - решение от Егора
-
 // function dosmth(counter = 0) {
 
 //     return {
@@ -67,3 +67,4 @@ console.log(dosmth(0));
 // };
 
 // console.log(dosmth(2).plus(5));
+
