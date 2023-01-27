@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      
+    }
+
+    #ball {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all .3s;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Нажмите на поле для перемещения мяча.
+  <br> Мяч не должен выходить за границы поля.
+
+
+  <div id="field">
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+<script>
+
+    const ball = document.getElementById('ball');
+    const field = document.getElementById('field');
+    
+    let fieldCoords = field.getBoundingClientRect();
+
+    document.getElementById('field').addEventListener('click', function(e) {
+      let posY = e.clientY - fieldCoords.top - field.clientTop - ball.clientHeight/2;
+      let posX = e.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth/2;
+
+      if (posY < 0) posY = 0;
+      if (posX < 0) posX = 0;
+      if (posY >= field.clientHeight - ball.clientHeight) posY = field.clientHeight - ball.clientHeight;
+      if (posX >= field.clientWidth - ball.clientWidth) posX = field.clientWidth - ball.clientWidth;
+
+       ball.style.top = posY + 'px';
+       ball.style.left = posX + 'px';
+       
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .gallery li {
+            display: inline-block;
+        }
+
+        .container img {
+            width: 130px;
+            height: 130px;
+            display: block;
+        }
+
+        .gallery ul {
+            height: 130px;
+            width: 9999px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            transition: margin-left 250ms;
+            font-size: 0;
+        }
+
+        .container {
+            
+            position: relative;
+            width: 400px;
+            padding: 10px 40px;
+            border: 1px solid #CCC;
+            border-radius: 15px;
+            margin: auto;
+            background-color: #eee;
+        }
+
+        span {
+            position: absolute;
+            top: 45%;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            background-color: grey;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .left {
+            left: 10px;
+        }
+
+        .right {
+            right: 10px;
+        }
+        
+        .gallery {
+            width: 390px;
+            overflow: hidden;
+            transition: all .3s;
+        }
+    </style>
+    <div class="container">
+        <span class="left"><</span>
+        <div class="gallery">
+            <ul class="pics">
+                <li>
+                    <img src="img/1.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/2.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/3.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/4.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/5.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/6.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/7.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/8.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/9.png" alt="smiles">
+                </li>
+                <li>
+                    <img src="img/10.png" alt="smiles">
+                </li>
+            </ul>
+        </div>
+        <span class="right">></span>
+    </div>
+
+    <script>
+        const left = document.querySelector('.left');
+        const right = document.querySelector('.right');
+        let offset = 0;
+
+        let list = document.querySelector('.gallery ul');
+        let listElems = document.querySelectorAll('li');
+        let visibleItems = 3;
+        let elemsNum = document.querySelectorAll('li').length - visibleItems;
+        let itemWidth = document.querySelectorAll('img')[0].clientWidth;
+    
+        left.addEventListener('click', function(){
+
+            if (elemsNum === listElems.length - visibleItems) {
+                offset += 0;
+                console.log(elemsNum);
+            } else if (elemsNum <= 0) {
+                offset += itemWidth * visibleItems;
+                elemsNum += visibleItems;
+                console.log(elemsNum);
+            } 
+            else if (elemsNum < listElems.length - visibleItems) {
+
+                if (elemsNum + visibleItems >= listElems.length - visibleItems) {
+                    elemsNum = (listElems.length - visibleItems) - elemsNum;
+                    offset += itemWidth * elemsNum;
+                    elemsNum = listElems.length - visibleItems;
+                } else {
+                    offset += itemWidth * visibleItems;
+                    elemsNum += visibleItems;
+                    console.log(elemsNum);
+                }              
+            } 
+
+            list.style.marginLeft = offset + 'px';
+        });
+
+        right.addEventListener('click', function(e){
+
+            if (elemsNum >= visibleItems) {
+                offset -= itemWidth * visibleItems;
+                elemsNum -= visibleItems;
+                console.log(elemsNum);
+            } else if (elemsNum < visibleItems) {
+                offset -= itemWidth * elemsNum;
+                elemsNum -= elemsNum;
+                console.log(elemsNum);
+            } else if (elemsNum <= 0) {
+                offset -= 0;
+                console.log(elemsNum);
+            }
+            list.style.marginLeft = offset + 'px';
+        });
+    </script>
+</body>
+</html>

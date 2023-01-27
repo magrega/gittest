@@ -1,0 +1,109 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <style>
+    [data-type]:hover {
+      background-color: yellow;
+      cursor: pointer;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+  </style>
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+      <tr>
+        <td>99</td>
+        <td>Санек</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>Настя</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>Леха</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    document.addEventListener('click', function (e) {
+
+      if (e.target.tagName !== 'TH') return;
+
+      const trs = document.body.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+      const tbody = document.querySelector('tbody');
+      const numArr = Array.from(trs);
+
+      if (e.target.dataset.type === 'string') {
+        numArr.sort(stringSort);
+        
+         for (let i = 0; i < numArr.length; i++) {
+          tbody.append(numArr[i])
+         }
+      } else if (e.target.dataset.type === 'number') {
+        numArr.sort(numSort);
+        
+        for (let i = 0; i < numArr.length; i++) {
+         tbody.append(numArr[i])
+        }
+      }
+
+      function stringSort(a, b) {
+        return a.lastElementChild.textContent.localeCompare(b.lastElementChild.textContent);
+      }
+
+      function numSort(a, b) {
+        return a.firstElementChild.textContent - b.firstElementChild.textContent;
+      }
+
+
+
+    });
+  </script>
+
+</body>
+
+</html>

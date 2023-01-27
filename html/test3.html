@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        h3 {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        div {
+            position: relative;
+            padding: 15px;
+            max-width: 500px;
+            background-color: #edf5e1;
+            border-top: 2px solid #c4df9b;
+            margin: 0 auto;
+        }
+
+        .cross {
+            position: absolute;
+            right: 10px;
+            color: brown;
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="div1">
+        <span class="cross" data-close>[X]</span>
+        <h3>Лошадь</h3>
+        <span>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</span>
+    </div>
+    <div class="div2">
+        <span class="cross" data-close>[X]</span>
+        <h3>Осёл</h3>
+        <span>Домашний осёл (лат. Equus asinus asinus), или ишак, — одомашненный подвид дикого осла (Equus asinus), сыгравший важную историческую роль в развитии хозяйства и культуры человека и по-прежнему широко в хозяйстве многих развивающихся стран.</span>
+    </div>
+    <div class="div3">
+        <span class="cross" data-close>[X]</span>
+        <h3>Кошка</h3>
+        <span>Кошка, или домашняя кошка (лат. Felis silvestris catus), — домашнее животное, одно из наиболее популярных(наряду с собакой) «животных-компаньонов». Являясь одиночным охотником на грызунов и других мелких животных, кошка — социальное животное, использующее для общения широкий диапазон звуковых сигналов.</span>
+    </div>
+
+    <script>
+        // const exes = document.querySelectorAll('.cross');
+
+        // for (const ex of exes) {
+        //     ex.addEventListener('click', function(e) {
+        //         this.parentElement.style.display = 'none';
+        //     });
+        // }
+
+        //делегирование
+        document.addEventListener('click', function(e) {
+            if (e.target.dataset.close != undefined) { // если есть атрибут...
+                e.target.parentElement.style.display = 'none';
+            }
+        })
+    </script>
+</body>
+</html>

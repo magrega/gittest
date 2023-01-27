@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        .viewer {
+            width: 550px;
+            height: 400px;
+            padding: 5px;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+
+        .feed {
+        }
+        
+        .img {
+            display: inline-block;
+            height: 100px;
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="viewer">
+        <img src="img/img6.jpg" alt="some pic">
+    </div>
+    <div class="feed" id="feed">
+        <div class="img"><img src="img/img1sm.jpg" alt="some pic"></div>
+        <div class="img"><img src="img/img2sm.jpg" alt="some pic"></div>
+        <div class="img"><img src="img/img3sm.jpg" alt="some pic"></div>
+        <div class="img"><img src="img/img4sm.jpg" alt="some pic"></div>
+        <div class="img"><img src="img/img5sm.jpg" alt="some pic"></div>
+    </div>
+
+    <script>
+        feed.addEventListener('click', function(e) {
+            
+            if (e.target.tagName !== "IMG") return;
+            const viewerSrc = document.querySelector('.viewer').firstElementChild;           
+            viewerSrc.setAttribute('src', e.target.src.replace('sm', ''));
+
+        });
+    </script>
+
+</body>
+
+</html>

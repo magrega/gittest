@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .selected {
+            background: #0f0;
+        }
+
+        li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    Кликни на элемент списка, чтобы выделить его.
+    <br>
+
+    <ul id="ul">
+        <li>Кристофер Робин</li>
+        <li>Винни Пух</li>
+        <li>Тигра</li>
+        <li>Кенга</li>
+        <li>Кролик. Просто Кролик.</li>
+    </ul>
+
+    <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+
+    <script>
+        document.getElementById('textarea').value = localStorage.getItem('textarea');
+
+        document.getElementById('textarea').addEventListener('change', (e) => {
+            localStorage.setItem('textarea', e.target.value)
+            console.log(localStorage.textarea);
+        });
+
+        // document.addEventListener('mousedown', function (e) {
+        //     e.preventDefault();
+        // });
+
+        document.addEventListener('click', function (e) {
+            if (e.ctrlKey && e.target.tagName === 'LI') {
+                e.target.classList.toggle('selected');
+            } else if (e.target.tagName === 'LI') {
+                for (const li of document.querySelectorAll(".selected")) {
+                    li.classList.remove('selected');
+                }
+                e.target.classList.add('selected');
+            }
+        });
+
+        // let user = {
+        //     name: "Василий Иванович",
+        //     age: 35
+        // };
+
+        // const json = JSON.stringify(user);
+        // console.log(json);
+
+        // const parsedJson = JSON.parse(json);
+        // console.log(parsedJson);
+
+        
+    </script>
+
+</body>
+
+</html>

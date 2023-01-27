@@ -1,0 +1,126 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        .clicking {
+            border: 1px solid #000;
+        }
+
+        .form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: olive;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 100;
+        }
+
+        form>* {
+            margin-bottom: 20px;
+        }
+
+        #page-mask {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 99;
+        }
+    </style>
+    <button class="task1" id="addDiv" onclick="addDiv()">Add div</button>
+
+    <div class="task2 clicking">
+        <p>left clicks: <span class="leftClick"></span></p>
+        <p>right clicks: <span class="rightClick"></span></p>
+    </div>
+    <br>
+    <div class="task3">
+        <div id="page-mask"></div>
+        <button class="signupBtn">sign up</button>
+        <button class="loginBtn">log in</button>
+        <div class="signupDiv form">
+            <form class="signupForm" id="signupForm" action="">
+                <label for="name">Enter your name:</label>
+                <input type="text" name="name">
+                <br>
+                <label for="lastname">Enter your last name:</label>
+                <input type="text" name="lastname">
+                <br>
+                <label for="age">Enter your age:</label>
+                <input type="text" name="age">
+                <br>
+                <label for="login">Enter your login:</label>
+                <input type="text" required name="login">
+                <br>
+                <label for="password">Enter your password:</label>
+                <input type="password" required name="password">
+                <br>
+                <label for="passwordConfirm">Confirm your password:</label>
+                <input type="password" required name="passwordConfirm">
+                <br>
+                <button class="register">register</button>
+                <button class="cancel">cancel</button>
+
+            </form>
+        </div>
+        <div class="loginDiv form">
+            <form class="loginForm" id="loginForm" action="">
+                <label for="login">Enter your login:</label>
+                <input type="text" required name="login">
+                <br>
+                <label for="password">Enter your password:</label>
+                <input type="password" required name="password">
+                <br>
+                <button class="login">login</button>
+                <button class="cancel">cancel</button>
+            </form>
+        </div>
+        <div class="account form">
+            <form class="accountForm" id="accountForm" action="">
+                <label for="name">Your name:</label>
+                <input type="text" name="name">
+                <br>
+                <label for="lastname">Your last name:</label>
+                <input type="text" name="lastname">
+                <br>
+                <label for="age">Your age:</label>
+                <input type="text" name="age">
+                <br>
+                <label for="login">Your login:</label>
+                <input type="text" required name="login">
+                <br>
+                <label for="password">Your password:</label>
+                <input type="password" required name="password">
+                <br>
+                <button class="cancel">cancel</button>
+
+            </form>
+        </div>
+    </div>
+
+
+    <script src="tasks6.js"></script>
+    <script>
+        function addDiv() {
+            let div = document.createElement('div');
+            div.innerHTML = 'I\'ve been added!'
+            document.body.append(div);
+        };
+    </script>
+
+</body>
+
+</html>

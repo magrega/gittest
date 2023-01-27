@@ -1,0 +1,149 @@
+/* https://css-tricks.com/centering-css-complete-guide/
+https://habr.com/ru/post/238449/
+https://shorturl.at/aPSUZ */
+
+* {
+
+    text-align: center;
+}
+
+/* 1. Автоматический отступ. Для блока задаём ширину и высоту, позиционируем атрибутами top right bottom left на 0, и задаём margin auto. Плюсом данного варианта являются рабочие скроллбары у родителя, если у последнего задана 100% ширина и высота. Минусом данного способ является жёсткое задание размеров. */
+
+.block-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-color: grey;
+}
+
+.block {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background-color: blue;
+}
+
+/* 2. Отрицательный отступ. Позиционируем блок атрибутами top и left на 50%, и заранее зная высоту и ширину блока, задаём отрицательный margin, который равен половине размера блока. Огромным минусом данного варианта является то, что нужно подсчитывать отрицательные отступы. Так же блок не совсем корректно ведёт себя в окружении скроллбаров — он попросту обрезается так как имеет отрицательные отступы.
+
+Пример: jsfiddle.net/serdidg/pphzjh25 */
+
+.parent {
+    position: relative;
+    background-color: grey;
+    height: 600px;
+}
+
+.child {
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -70px 0 0 -170px;
+    background-color: blue;
+}
+
+/* 3. Таблица. Задаём родителю табличные стили, ячейке родителя устанавливаем выравнивание текста по центру. А блоку задаём модель строчного блока. Минусами мы получаем нерабочие скроллбары, и в целом неэстетичность «эмуляции» таблицы. */
+
+
+.parent1 {
+    width: 100%;
+    height: 100%;
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.block2 {
+    display: inline-block;
+    background: #60a839;
+}
+
+/* 4. Используем transform: translate. Если неизвестна ширина и высота, можно использовать трансформ и негативный транслейт 50% в обе стороны к центру: */
+
+.parent2 {
+    position: relative;
+    background-color:bisque;
+}
+
+.child2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #60a839;
+}
+
+/* 5. Флекбокс.  */
+
+.parent3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.child3 {
+    background-color: #60a839;
+}
+
+/* 6. Грид. Небольшой трюк для центрирования одного элемента. */
+
+body,
+html {
+    height: 100%;
+    display: grid;
+}
+
+span {
+    /* thing to center */
+    margin: auto;
+    background-color: #60a839;
+    height: 300px;
+    display: inline-grid;
+    align-items: center;
+}
+
+/* 7. Центрируем два адаптивных div-элемента рядом друг с другом. */
+
+/* https://codepen.io/magrega/pen/oNMxgJK */
+
+.container {
+    text-align: center;
+    padding: 15px;
+}
+
+.left-div {
+    display: inline-block;
+    max-width: 300px;
+    text-align: left;
+    padding: 30px;
+    background-color: #ddd;
+    border-radius: 3px;
+    margin: 15px;
+    vertical-align: top;
+}
+
+.right-div {
+    display: inline-block;
+    max-width: 150px;
+    text-align: left;
+    padding: 30px;
+    background-color: #ddd;
+    border-radius: 3px;
+    margin: 15px;
+}
