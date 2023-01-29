@@ -39,7 +39,7 @@ function dosmth(counter = 0) {
     }
 };
 
-console.log(dosmth(0).plus(5));
+dosmth(0).plus(5);
 
 // методы функции - решение от Егора
 // function createCounter(initialValue = 0) {
@@ -61,4 +61,4 @@ console.log(dosmth(0).plus(5));
 //     }
 // };
 
-// console.log(createCounter(0).increment(5).decrement(3));
+//createCounter(0).increment(5).decrement(3);

@@ -5,7 +5,7 @@
 //     return Array.from(new Set(theArgs));
 // }
 
-// console.log(unique(1, 2, 3, 5, 2, 3, 5));
+// unique(1, 2, 3, 5, 2, 3, 5);
 
 //мое решение
 
@@ -19,7 +19,7 @@ function unique(...theArgs) {
     return uniqueArr;
 }
 
-console.log(unique(1, 2, 3, 5, 2, 3, 5));
+unique(1, 2, 3, 5, 2, 3, 5);
 
 //мое решение - нагуглил подходящий метод
 // function unique(...theArgs) {
@@ -27,4 +27,4 @@ console.log(unique(1, 2, 3, 5, 2, 3, 5));
 //     return theArgs.filter((item, index, array) => array.indexOf(item) === index);
 // }
 
-// console.log(unique(1, 2, 3, 5, 2, 3, 5));
+// unique(1, 2, 3, 5, 2, 3, 5);
