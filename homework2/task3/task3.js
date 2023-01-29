@@ -57,7 +57,7 @@ Car.prototype.calculateWay = function (kilometers, fuel) {
 
 var car = new Car("Mazda", "RX8", 2000, "red", 200);
 
-// console.log(car.calculateWay(400, 30));
+// car.calculateWay(400, 30);
 
 function BMW(name, model, year, color, maxSpeed, dildoCompartment, fuelCapacity = 60, fuelConsumption = 10) {
     Car.call(this, name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption);
@@ -66,13 +66,11 @@ function BMW(name, model, year, color, maxSpeed, dildoCompartment, fuelCapacity 
 
 BMW.prototype = Object.create(Car.prototype);
 
-BMW.prototype.blastMusic = function() {
+BMW.prototype.blastMusic = function () {
     console.log("animals martin garrix is blastin'");
 }
 
 var bmw = new BMW("BMW", "M3", 1980, "blue", 180, true);
-
-// console.log(bmw.blastMusic());
 
 /////////////////////////////////////////////////////////////
 
@@ -83,14 +81,11 @@ function Lexus(name, model, year, color, maxSpeed, anotherLife, fuelCapacity = 6
 
 Lexus.prototype = Object.create(Car.prototype);
 
-Lexus.prototype.dreamBig = function() {
+Lexus.prototype.dreamBig = function () {
     console.log("Having a lexus is just... another life...");
 }
 
 var lexus = new Lexus("lexus", "LS", 2010, "grey", 150, true);
-
-// lexus.dreamBig();
-// console.log(lexus);
 
 /////////////////////////////////////////////////////////////
 
@@ -101,18 +96,15 @@ function Lada(name, model, year, color, maxSpeed, brokenDoors, fuelCapacity = 60
 
 Lada.prototype = Object.create(Car.prototype);
 
-Lada.prototype.slamDoor = function() {
+Lada.prototype.slamDoor = function () {
     console.log("Тебе кабину снести?");
 }
 
 var lada = new Lada("Lada", "Largus", 1960, "grey", 150, 4);
 
-console.log(bmw.getAge());
-console.log(lada.getAge());
-console.log(lexus.getAge());
+bmw.getAge();
+lada.getAge();
+lexus.getAge();
 bmw.blastMusic();
 lexus.dreamBig();
 lada.slamDoor();
-console.log(bmw);
-console.log(lexus);
-console.log(lada);
