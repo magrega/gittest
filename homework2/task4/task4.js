@@ -12,19 +12,14 @@ class Car {
         this.fuelConsumption = fuelConsumption;
     }
     getFullName = () => {
-        return this.name + " " + this.model;
+        return `${this.name} ${this.model}`;
     }
     getAge = () => {
         return new Date().getFullYear() - this.year;
     }
-    changeColor = () => {
-        if (color === this.color) {
-            console.log("already this color");
-        } else {
-            console.log("changed color to " + color);
-            this.color = color;
-        }
-    }
+    changeColor = (color) => color === this.color ? console.log("already this color") : (console.log("changed color to " + color), this.color = color);
+        
+    
     calculateWay = (kilometers, fuel) => {
         if (fuel < 10) console.log("Low gas");
         console.log("Time on road: " + kilometers / this.maxSpeed + " hour(s)");
@@ -37,7 +32,9 @@ class Car {
 
 const car = new Car("Mazda", "RX8", 2000, "red", 200);
 
-car.calculateWay(400, 30);
+// car.calculateWay(400, 30);
+// console.log(car.getFullName());
+
 
 // /////////////////////////////////////////////////////////////
 
@@ -52,7 +49,7 @@ class BMW extends Car {
 };
 
 const bmw = new BMW("BMW", "M3", 1980, "blue", 180, true);
-bmw.blastMusic();
+// bmw.blastMusic();
 
 // /////////////////////////////////////////////////////////////
 
@@ -61,9 +58,7 @@ class Lexus extends Car {
         super(name, model, year, color, maxSpeed, fuelCapacity, fuelConsumption);
         this.anotherLife = anotherLife;
     }
-    dreamBig = () => {
-        console.log("Having a lexus is just... another life...");
-    }
+    dreamBig = () => console.log("Having a lexus is just... another life...");
 };
 
 const lexus = new Lexus("lexus", "LS", 2010, "grey", 150, true);
@@ -84,10 +79,10 @@ class Lada extends Car {
 
 const lada = new Lada("Lada", "Largus", 1960, "grey", 150, 4);
 
-lada.slamDoor();
+// lada.slamDoor();
 
-bmw.getAge();
-lada.getAge();
-lexus.getAge();
+// bmw.getAge();
+// lada.getAge();
+// lexus.getAge();
 
 
