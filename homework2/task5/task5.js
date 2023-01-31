@@ -11,7 +11,7 @@
 
 
 const HOST = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
-const KEY = "CU6C3P9UUA3R89ZXRPGWJHH7C";
+const KEY = "******";
 const weatherContainer = document.querySelector('.weatherData');
 const inputElement = document.querySelector(".input");
 
