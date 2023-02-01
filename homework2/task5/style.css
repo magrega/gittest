@@ -3,7 +3,7 @@ body {
     background-size: cover;
     padding: 0 100px;
     box-sizing: border-box;
-
+    margin: 0;
 }
 
 .container {
@@ -11,8 +11,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    height: 100%;
-    transition: all 1s;
+    height: 50%;
 }
 
 .controls {
@@ -24,11 +23,12 @@ body {
     border-radius: 8px;
     padding: 5px;
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     transition: all .5s;
 }
 
-.input:focus, .letsgo:hover {
+.input:focus,
+.letsgo:hover {
     -webkit-box-shadow: -9px 8px 8px 0px rgba(10, 26, 37, 0.42);
     -moz-box-shadow: -9px 8px 8px 0px rgba(10, 26, 37, 0.42);
     box-shadow: -9px 8px 8px 0px rgba(10, 26, 37, 0.42);
@@ -36,14 +36,14 @@ body {
 
 .letsgo {
     display: inline;
+    padding: 5px;
+    border-radius: 8px;
     background-color: #621e21;
     border: 2px solid black;
-    border-radius: 8px;
-    padding: 5px;
     color: white;
-    cursor: pointer;
     font-size: 20px;
     transition: all .5s;
+    cursor: pointer;
 }
 
 .letsgo:hover {
@@ -52,18 +52,35 @@ body {
 
 
 .weatherData {
-    max-width: 100px;
-    background-color: transparent;
-    color: transparent;
-    border: 1px solid transparent;
-    border-radius: 4px;
     padding: 20px;
+    max-width: 300px;
+    visibility: hidden;
+    color: white;
+    background-color: rgba(0, 0, 0, .8);
+    border-radius: 4px;
     font-size: 20px;
-    transition: all 1s;
 }
 
 .seeable {
-    max-width: 300px;
-    background-color: rgba(0, 0, 0, .8);
-    color: white;
+   visibility: visible;
+}
+
+/*  ------------table------------------*/
+table,
+th,
+td {
+    background-color: #fff;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+table {
+    display: none;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+.table-visible {
+    display: table;
 }

@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,24 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <title>task5</title>
 </head>
+
 <body>
     <div class="container">
         <div class="controls">
             <form id="form" action="">
-                <input required class="input" type="text" placeholder="Enter city...">
+                <input required tabindex="0" class="input" type="text" placeholder="Enter city...">
                 <br>
-                <button type="submit" class="letsgo">Let's go!</button>
+                <button type="button" class="clear letsgo">Clear</button>
+                <button type="button" class="myWeather letsgo">My Weather</button>
+                <button type="submit" class="search letsgo">Let's go!</button>
             </form>
         </div>
         <div class="weatherData">
-            <span>
-                Here you'll see your data
-            </span>
         </div>
     </div>
+    <div class="tables">
+       
+        <table>
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Temperature</th>
+                    <th>Feels like</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
 
-    
-    
+    </div>
+
+
     <script src="task5.js"></script>
 </body>
+
 </html>
