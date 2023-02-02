@@ -84,3 +84,30 @@ table {
 .table-visible {
     display: table;
 }
+
+/*---------------spinner------------------*/
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border-top: 5px solid #000;
+    border-radius: 100%;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+}
+
+#loading.visible {
+    visibility: visible;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
