@@ -1,3 +1,5 @@
+import { getCityAndCountry } from "./APIservices.js";
+
 const weatherContainer = document.querySelector('.weatherData');
 
 async function getWeatherData(obj) {
@@ -12,15 +14,15 @@ async function getWeatherData(obj) {
     return weather;
 };
 
-function getCityAndCountry(lat, lon, obj) {
-    return fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}`).then(item => item.json()).then(item => {
-        obj.city = item.address.city ?? item.address.state ?? item.address.town ?? item.address.village;
-        obj.country = item.address.country;
-        return item.address;
-    });
+
+export function getLocation() {
+    return new Promise((res, rej) => {
+        navigator.geolocation ? navigator.geolocation.getCurrentPosition(res, rej) : alert("Geolocation not supported");
+    })
 };
 
-function setLocalStorage(obj) {
+
+function setWeatherDataToLocalStorage(obj) {
     if (obj.city && obj.country && obj["Temperature"] && obj["Feels like"]) {
         localStorage.setItem("city", obj.city);
         localStorage.setItem("country", obj.country);
@@ -31,7 +33,7 @@ function setLocalStorage(obj) {
     }
 };
 
-function setWeatherInfo(obj) {
+function setWeatherfirstTable(obj) {
     weatherContainer.innerHTML = "";
     weatherContainer.classList.add('seeable');
     document.querySelector('form').reset();
@@ -45,11 +47,11 @@ function setWeatherInfo(obj) {
     return obj;
 };
 
-export async function handleObject(obj) {
+export async function handleWeatherObject(obj) {
     
     const computedObj = await getWeatherData(obj);
-    setLocalStorage(computedObj);
-    setWeatherInfo(computedObj);
+    setWeatherDataToLocalStorage(computedObj);
+    setWeatherfirstTable(computedObj);
     loading.classList.remove('visible');
     return computedObj;
 };

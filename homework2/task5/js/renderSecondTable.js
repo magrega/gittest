@@ -3,7 +3,7 @@ const table = document.querySelector('table');
 
 const cityArr = []; // don't like using array
 
-export function makeTable() {
+export function renderSecondTable() {
     const storageCity = localStorage.getItem('city');
 
     if (cityArr.includes(storageCity)) {

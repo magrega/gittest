@@ -65,6 +65,10 @@ body {
    visibility: visible;
 }
 
+.searchButtons {
+    display: inline;
+}
+
 /*  ------------table------------------*/
 table,
 th,
