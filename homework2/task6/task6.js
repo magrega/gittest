@@ -42,6 +42,7 @@ async function createNotification() {
     notificationX.style.right = 5;
     notificationX.style.top = 5;
     notificationX.style.cursor = "pointer";
+    notificationX.tabIndex = "3";
 
     const notificationCheckbox = document.createElement('input');
     notificationCheckbox.type = "checkbox";
@@ -82,7 +83,6 @@ async function createNotification() {
     notificationBody.prepend(notificationTitle, notificationText, notificationX, inputContainer);
     document.body.prepend(notificationBody);
 
-
     function rightArrowFunc() {
         let indexChecked = +(document.querySelector('.radios > input:checked').classList[0]);
 
@@ -103,7 +103,6 @@ async function createNotification() {
         } else {
             document.querySelectorAll('.radios > input')[indexChecked - 1].click();
         }
-
     }
 
     function close() {
@@ -115,7 +114,6 @@ async function createNotification() {
         checkbox.checked ? localStorage.setItem('neverShow', true) : localStorage.remove('neverShow');
     }
 
-
     notificationRadios.addEventListener('click', function (e) {
         if (e.target.type !== "radio") return;
         const index = e.target.classList[0];
@@ -125,33 +123,28 @@ async function createNotification() {
 
     document.addEventListener('keydown', function (e) {
         if (e.code === "ArrowRight") rightArrowFunc();
-
     });
 
     document.addEventListener('keydown', function (e) {
         if (e.code === "ArrowLeft") leftArrowFunc();
-
     });
 
-    rightArrow.addEventListener('click', function () {
-        rightArrowFunc();
-    });
+    rightArrow.addEventListener('click', rightArrowFunc);
+    leftArrow.addEventListener('click', leftArrowFunc);
+    notificationX.addEventListener('click', close);
+    
 
     rightArrow.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') rightArrowFunc();
-    });
-
-    leftArrow.addEventListener('click', function () {
-        leftArrowFunc();
     });
 
     leftArrow.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') leftArrowFunc();
     });
 
-    notificationX.addEventListener('click', function () {
-        close();
-    })
+    notificationX.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') close();
+    });
 
     notificationCheckbox.addEventListener('click', function (e) {
         setDisableFlag(e.target);
