@@ -152,4 +152,3 @@ async function createNotification() {
 }
 
 localStorage.getItem('neverShow') ? console.log("Notification disabled") : createNotification();
-
