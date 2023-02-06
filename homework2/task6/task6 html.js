@@ -34,8 +34,6 @@ async function createNotification() {
     }
 
     function ArrowFunc(e) {
-        console.log(e.target);
-        
         let indexChecked = +(document.querySelector('.radios > input:checked').classList[0]);
         e.stopPropagation();
         if ((e.target.classList.contains('leftArrow') && (e.key === 'Enter' || e.type === 'click')) || e.code === "ArrowLeft") {
