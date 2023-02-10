@@ -8,7 +8,6 @@ const inputElement = document.querySelector(".input");
 const loading = document.querySelector('#loading');
 const myWeatherBtn = document.querySelector(".myWeather");
 
-
 async function makeURL(button) {
     let query;
     if (button.classList.contains("search")) {
@@ -24,7 +23,6 @@ async function makeURL(button) {
     const weatherUrl = `${HOST}${query}?unitGroup=us&key=${KEY}&contentType=json`;
     return weatherUrl;
 }
-
 
 export async function fetchRequest(button) {
 
