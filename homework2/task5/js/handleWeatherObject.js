@@ -1,31 +1,38 @@
-import { getCityAndCountry } from "./APIservices.js";
+import {
+    getCityAndCountry
+} from "./APIservices.js";
 
 const weatherContainer = document.querySelector('.weatherData');
 
+const convertToDegreeCelsius = (temperature) => `${Math.floor(((+(temperature) - 32) * 5 / 9))}C`;
+
 async function getWeatherData(obj) {
-    const weather = {};
-    weather.description = obj.description;
-    weather["Clouds"] = obj.currentConditions.conditions;
-    weather["Feels like"] = `${Math.floor(((+(obj.currentConditions.feelslike) - 32) * 5 / 9))}C`;
-    weather["Pressure"] = `${obj.currentConditions.pressure}MB`;
-    weather["Temperature"] = `${Math.floor(((+(obj.currentConditions.temp) - 32) * 5 / 9))}C`;
-    weather["Tomorrow"] = `${Math.floor(((+(obj.days[1].temp) - 32) * 5 / 9))}C`;
+    const weather = {
+        description: obj.description,
+        clouds: obj.currentConditions.conditions,
+        feelsLike: convertToDegreeCelsius(obj.currentConditions.feelslike),
+        pressure: `${obj.currentConditions.pressure}MB`,
+        temperature: convertToDegreeCelsius(obj.currentConditions.temp),
+        tomorrow: convertToDegreeCelsius(obj.days[1].temp),
+    }
     await getCityAndCountry(obj.latitude, obj.longitude, weather);
+
     return weather;
 };
 
 export function getLocation() {
+    
     return new Promise((res, rej) => {
         navigator.geolocation ? navigator.geolocation.getCurrentPosition(res, rej) : alert("Geolocation not supported");
     })
 };
 
 function setWeatherDataToLocalStorage(obj) {
-    if (obj.city && obj.country && obj["Temperature"] && obj["Feels like"]) {
+    if (obj.city && obj.country && obj.temperature && obj.feelsLike) {
         localStorage.setItem("city", obj.city);
         localStorage.setItem("country", obj.country);
-        localStorage.setItem("temp", obj["Temperature"]);
-        localStorage.setItem("feelslike", obj["Feels like"]);
+        localStorage.setItem("temp", obj.temperature);
+        localStorage.setItem("feelslike", obj.feelsLike);
     } else {
         alert("No data to set!");
     }
@@ -39,9 +46,10 @@ function setWeatherfirstTable(obj) {
     for (const key in obj) {
         if (key === 'city' || key === 'country') continue;
         const P = document.createElement('p');
-        P.innerHTML = `${key}: ${obj[key]}`;
+        P.innerHTML = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${obj[key]}`;
         weatherContainer.append(P);
     };
+
     return obj;
 };
 
@@ -50,5 +58,6 @@ export async function handleWeatherObject(obj) {
     setWeatherDataToLocalStorage(computedObj);
     setWeatherfirstTable(computedObj);
     loading.classList.remove('visible');
+
     return computedObj;
 };
