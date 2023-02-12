@@ -29,7 +29,7 @@ export function renderSecondTable() {
     if (tbody.children[0]) {
         table.classList.add('table-visible');
     }    
-};
+}
 
 export function clearTableAndLocalStorage() {
     table.classList.remove('table-visible');

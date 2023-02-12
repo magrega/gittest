@@ -25,7 +25,6 @@ async function makeURL(button) {
 }
 
 export async function fetchRequest(button) {
-
     const request = await makeURL(button);
     loading.classList.add('visible');
     return fetch(request).then(item => item.json()).catch((err) => {

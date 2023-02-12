@@ -52,9 +52,9 @@ body {
 
 
 .weatherData {
-    padding: 20px;
-    max-width: 300px;
     visibility: hidden;
+    max-width: 300px;
+    padding: 20px;
     color: white;
     background-color: rgba(0, 0, 0, .8);
     border-radius: 4px;
@@ -92,6 +92,7 @@ table {
 /*---------------spinner------------------*/
 
 #loading {
+    visibility: hidden;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -99,7 +100,6 @@ table {
     height: 50px;
     border-top: 5px solid #000;
     border-radius: 100%;
-    visibility: hidden;
     animation: spin 1s infinite linear;
 }
 

@@ -14,13 +14,11 @@ async function getWeatherData(obj) {
     return weather;
 };
 
-
 export function getLocation() {
     return new Promise((res, rej) => {
         navigator.geolocation ? navigator.geolocation.getCurrentPosition(res, rej) : alert("Geolocation not supported");
     })
 };
-
 
 function setWeatherDataToLocalStorage(obj) {
     if (obj.city && obj.country && obj["Temperature"] && obj["Feels like"]) {
@@ -48,7 +46,6 @@ function setWeatherfirstTable(obj) {
 };
 
 export async function handleWeatherObject(obj) {
-    
     const computedObj = await getWeatherData(obj);
     setWeatherDataToLocalStorage(computedObj);
     setWeatherfirstTable(computedObj);
