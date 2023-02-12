@@ -22,10 +22,13 @@ import {
 } from "./APIservices.js";
 
 //eventlisteners
-document.querySelector('.searchButtons').addEventListener('click', function (e) {
+document.querySelector('.myWeather').addEventListener('click', async function (e) {
+    fetchRequest(e.target).then(item => handleWeatherObject(item)).then(() => renderSecondTable());
+});
+
+document.querySelector('.search').addEventListener('click', async function (e) {
     e.preventDefault();
     fetchRequest(e.target).then(item => handleWeatherObject(item)).then(() => renderSecondTable());
-
 });
 
 document.querySelector('.clear').addEventListener('click', function () {
