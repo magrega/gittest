@@ -37,12 +37,7 @@ export async function fetchRequest(button) {
     });
 }
 
-export function getCityAndCountry(lat, lon, obj) {
+export function getCityAndCountry(lat, lon) {
 
-    return fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}`).then(item => item.json()).then(item => {
-        obj.city = item.address.city ?? item.address.state ?? item.address.town ?? item.address.village;
-        obj.country = item.address.country;
-
-        return item.address;
-    });
+    return fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}`).then(item => item.json()).then(item => item.address);
 };

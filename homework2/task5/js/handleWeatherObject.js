@@ -7,6 +7,7 @@ const weatherContainer = document.querySelector('.weatherData');
 const convertToDegreeCelsius = (temperature) => `${Math.floor(((+(temperature) - 32) * 5 / 9))}C`;
 
 async function getWeatherData(obj) {
+    const cityAndCountry = await getCityAndCountry(obj.latitude, obj.longitude);
     const weather = {
         description: obj.description,
         clouds: obj.currentConditions.conditions,
@@ -14,8 +15,9 @@ async function getWeatherData(obj) {
         pressure: `${obj.currentConditions.pressure}MB`,
         temperature: convertToDegreeCelsius(obj.currentConditions.temp),
         tomorrow: convertToDegreeCelsius(obj.days[1].temp),
+        city: cityAndCountry.city ?? cityAndCountry.state ?? cityAndCountry.town ?? cityAndCountry.village,
+        country: cityAndCountry.country
     }
-    await getCityAndCountry(obj.latitude, obj.longitude, weather);
 
     return weather;
 };
